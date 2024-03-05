@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>next Page</title>
+    <link th:href="@{/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css}" rel="stylesheet" />
+    <link th:href="@{/css/common/common.css}" rel="stylesheet" />
+    <script th:src="@{/webjars/jquery/1.11.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js}"></script>
+    <title>ログインページ</title>
 </head>
-<body>
-<h1>ログイン</h1>
+<body class="text-center">
+<h1>ログインページ</h1>
+<form th:action="@{/login}" method="post">
+    <div>
+        <label>ユーザーID</label>
+        <input type="text" id="user_id" name="user_id"/>
+    </div>
+    <div>
+        <label for="password">パスワード</label>
+        <input type="password" id="password" name="password"/>
+    </div>
+    <div>
+        <button class="btn btn-primary" type="submit">ログイン</button>
+    </div>
+</form>
+<br />
+<a th:href="@{'signup'}">ユーザー新規登録はこちら</a>
 </body>
 </html>
