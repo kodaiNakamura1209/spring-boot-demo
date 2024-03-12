@@ -1,1 +1,1 @@
-INSERT INTO TEST_TABLE (ID, PASSWORD, user_name) VALUES ('test','test', '中村　弘大');
+INSERT INTO TEST_TABLE (id, password, hash_password, user_name) VALUES ('test','pass', '$2a$10$dyFw4az7KeaZgD7QwWsCA.ubqaFyOHdqaVTZH14vSD2p.zcDf/gKm', '中村　弘大');

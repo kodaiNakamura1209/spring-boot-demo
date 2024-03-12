@@ -23,6 +23,8 @@ dependencies {
 	//⇒entityクラスの@entityなどに使用
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.projectlombok:lombok'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 
 	//⇒h2データベースを操作するのに使用

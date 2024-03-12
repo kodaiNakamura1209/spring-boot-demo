@@ -8,15 +8,14 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Transactional  // DBのトランザクション制御
 @Service        // サービスクラスであることを明示　クラスのBeanをDIコンテナに登録する
-public class MenuService {
+public class CustomAuthenticationService {
 
     private final UserRepository userRepository;
 
     @Autowired
-    public MenuService(UserRepository userRepository){
+    public CustomAuthenticationService(UserRepository userRepository){
         this.userRepository = userRepository;
     }
 

@@ -21,8 +21,10 @@ public class MenuController {
     private String loginSuccess(){
 
         // データ取得
-        List<UserEntity> users = menuService.findAll();
-        System.out.printf(users.toString());
+        List<UserEntity> userList = menuService.findAll();
+        System.out.printf("ID："+userList.get(0).getId()+
+                "　pass："+userList.get(0).getPassword()+
+                "　名前："+userList.get(0).getUserName());
 
         return "menu";
     }
