@@ -29,13 +29,22 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         // ブラウザから入力したユーザ名・パスワードを取得
-        String username = authentication.getName();
+        String userId = authentication.getName();
         String password = authentication.getCredentials().toString();
+        String hashPassword = passwordEncoder.encode(authentication.getCredentials().toString());
 
-        UserEntity userEntity = customAuthenticationService.findById(username);
-        if (passwordEncoder.matches(password, userEntity.getPassword())){
-            return new UsernamePasswordAuthenticationToken(username, password);
+        UserEntity userEntity = customAuthenticationService.findById(userId);
+        if (passwordEncoder.matches(password, userEntity.getHashPassword())){
+            System.out.println("OK");
+            System.out.println("ID(入力):"+userId+"　ID(DB):"+userEntity.getId());
+            System.out.println("PW_HASH(入力):"+hashPassword+"　PW_HASH(DB):"+userEntity.getHashPassword());
+            System.out.println("PW(入力):"+password+"　PW(DB):"+userEntity.getPassword());
+            return new UsernamePasswordAuthenticationToken(userId, password);
         } else {
+            System.out.println("NG");
+            System.out.println("ID(入力):"+userId+"　ID(DB):"+userEntity.getId());
+            System.out.println("PW_HASH(入力):"+hashPassword+"　PW_HASH(DB):"+userEntity.getHashPassword());
+            System.out.println("PW(入力):"+password+"　PW(DB):"+userEntity.getPassword());
             throw new BadCredentialsException("Authentication failed");
         }
     }

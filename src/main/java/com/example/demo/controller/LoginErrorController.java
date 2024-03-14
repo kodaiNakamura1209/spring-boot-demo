@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class LoginErrorController {
     @GetMapping("/loginError")
     private String loginError(){
+        System.out.println("----LoginErrorController  START------------");
         return "loginError";
     }
 }

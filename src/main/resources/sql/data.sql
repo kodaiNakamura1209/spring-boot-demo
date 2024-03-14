@@ -1,1 +1,0 @@
-INSERT INTO TEST_TABLE (ID, PASSWORD, user_name) VALUES ('test','test', '中村　弘大');

@@ -5,6 +5,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -12,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.formLogin(login -> login
+        http.formLogin((form) -> form
                 // 指定したURLがリクエストされるとログイン認証を行う。
                 .loginProcessingUrl("/login")
 
@@ -20,7 +24,7 @@ public class SecurityConfig {
                 .loginPage("/login")
 
                 // 認証成功後にリダイレクトする場所の指定
-                .defaultSuccessUrl("/menu")
+                .defaultSuccessUrl("/loginSuccess")
 
                 // ログインに失敗した時のURL
                 .failureUrl("/loginError")
@@ -40,11 +44,7 @@ public class SecurityConfig {
         ).authorizeHttpRequests(ahr -> ahr
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/").permitAll()
-
-                //"/admin"はADMIN権限のあるものだけがアクセスできる
-                .requestMatchers("/admin").hasRole("ADMIN")
-
-                //他のリンクは全て認証が必要である。
+                .requestMatchers("/loginSuccess").permitAll()
                 .anyRequest().authenticated()
         );
         return http.build();
