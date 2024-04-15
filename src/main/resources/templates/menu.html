@@ -10,5 +10,14 @@
     <tr><th>ユーザーID</th><th>ユーザー名</th></tr>
     <tr><td th:text="${userObject.id}"/><td th:text="${userObject.userName}" /></tr>
 </table>
+<br>
+<form name="dataUpdate" th:action="@{/dataUpdate/view}" method="get">
+    <button type="submit">データ更新</button>
+    <input type="hidden" name="userId" th:value="${userObject.id}">
+</form>
+<form name="dataDelete" th:action="@{/dataDelete/view}" method="get">
+    <button type="submit">データ削除</button>
+    <input type="hidden" name="userId" th:value="${userObject.id}">
+</form>
 </body>
 </html>

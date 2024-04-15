@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .loginPage("/login")
 
                 // 認証成功後にリダイレクトする場所の指定
-                .defaultSuccessUrl("/loginSuccess")
+                .defaultSuccessUrl("/loginMenu")
 
                 // ログインに失敗した時のURL
                 .failureUrl("/loginError")
@@ -44,7 +44,11 @@ public class SecurityConfig {
         ).authorizeHttpRequests(ahr -> ahr
                 .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                 .requestMatchers("/").permitAll()
-                .requestMatchers("/loginSuccess").permitAll()
+                .requestMatchers("/loginMenu").permitAll()
+                .requestMatchers("/signup/view").permitAll()
+                .requestMatchers("/dataUpdate/view").permitAll()
+                .requestMatchers("/dataUpdate/doUpdate").permitAll()
+                .requestMatchers("/dataDelete/view").permitAll()
                 .anyRequest().authenticated()
         );
         return http.build();

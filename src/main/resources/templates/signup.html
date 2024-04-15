@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新規登録</title>
+</head>
+<body>
+<h1>ユーザー新規登録</h1>
+<form name="doInsert" th:action="@{/signup/doInsert}" method="post">
+    <table>
+        <tr>
+            <td>ユーザー名</td>
+            <td><input type="text" name="inputUserName"/></td>
+        </tr>
+        <tr>
+            <td>ID</td>
+            <td><input type="text" name="inputUserId"/></td>
+        </tr>
+        <tr>
+            <td>PASSWORD</td>
+            <td><input type="text" name="inputUserPass"/></td>
+        </tr>
+    </table>
+    <button type="submit">登録</button>
+</form>
+</body>
+</html>

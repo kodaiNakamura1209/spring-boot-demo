@@ -19,10 +19,12 @@ public class UserEntity {
 
     @Column(name="password")
     private String password;
-
-    @Column(name = "hash_password")
+    
     private String hashPassword;
 
     @Column(name = "user_name")
     private String userName;
+
+    @Column(name="role")
+    private String role;
 }

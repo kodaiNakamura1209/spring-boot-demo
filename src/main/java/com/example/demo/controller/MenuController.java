@@ -19,26 +19,19 @@ public class MenuController {
         this.menuService = menuService;
     }
 
-    @GetMapping("/loginSuccess")
-    private String loginSuccess(Model model){
+    // メニューへ遷移
+    @GetMapping("/loginMenu")
+    private String loginMenu(Model model){
         System.out.println("----MenuController  START------------");
+
         // データ取得
         List<UserEntity> userList = menuService.findAll();
-        System.out.println("ID："+userList.get(0).getId()+
-                "　pass："+userList.get(0).getPassword()+
-                "　名前："+userList.get(0).getUserName());
-
         UserEntity user = userList.get(0);
 
+        // 画面に情報を渡す
         model.addAttribute("userObject", user);
 
         System.out.println("----MenuController  END------------");
-        return "menu";
-    }
-
-    @GetMapping("/menu")
-    private String menu(){
-        System.out.println("----MenuController  START------------");
         return "menu";
     }
 }
